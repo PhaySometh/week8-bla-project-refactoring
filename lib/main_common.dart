@@ -5,6 +5,7 @@ import 'data/repositories/location/location_repository.dart';
 import 'data/repositories/ride/ride_repository.dart';
 import 'data/repositories/ride_preference/ride_preference_repository.dart';
 import 'ui/screens/home/home_screen.dart';
+import 'ui/states/ride_preferences_state.dart';
 import 'ui/theme/theme.dart';
 
 void mainCommon({
@@ -19,6 +20,11 @@ void mainCommon({
         Provider<RideRepository>.value(value: rideRepository),
         Provider<RidePreferenceRepository>.value(
           value: ridePreferenceRepository,
+        ),
+        ChangeNotifierProvider<RidePreferencesState>(
+          create: (_) => RidePreferencesState(
+            repository: ridePreferenceRepository,
+          ),
         ),
       ],
       child: const BlaBlaApp(),
